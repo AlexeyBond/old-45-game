@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/sprites/jump1.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/jump3.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://assets/sprites/allChenals6.png" type="Texture" id=11]
 [ext_resource path="res://assets/sprites/allChenals7.png" type="Texture" id=12]
 [ext_resource path="res://assets/sprites/allChenals8.png" type="Texture" id=13]
+[ext_resource path="res://assets/sound/x0006.wav" type="AudioStream" id=14]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends KinematicBody2D
@@ -26,10 +27,9 @@ onready var start_origin_y = body.transform.get_origin().y
 const JUMP_HEIGHT = 400
 const JUMP_SPEED = 1000
 const FALL_SPEED = 300
-const SPEED_GROW_DELAY = 10
-const SPEED_GROW_C = 1.1
+const SPEED_GROW_DELAY = 2
+const SPEED_GROW_C = 1.01
 const SPEED_GROW_A = 0
-
 
 var game_speed = 1.0
 
@@ -37,7 +37,8 @@ var state_timer = 0
 var speed_timer = SPEED_GROW_DELAY
 
 func set_game_speed(speed):
-	#TODO: Set animation speed
+	$AudioStreamPlayer.set_pitch_scale(max(1, speed))
+	$AnimatedSprite.speed_scale = speed
 	game_speed = speed
 
 var state
@@ -47,14 +48,15 @@ func set_state(new_state):
 		\"idle\":
 			# TODO: Set animation
 			colorRect.color = Color.red
-			game_speed = 0
+			set_game_speed(0)
+			$AudioStreamPlayer.play()
 		\"running\":
 			$AnimatedSprite.play(\"running\")
 			colorRect.color = Color.green
 		\"jumping\":
 			$AnimatedSprite.play(\"jumping\")
 			if state == \"idle\":
-				game_speed = 1.0
+				set_game_speed(1.0)
 			colorRect.color = Color.blue
 		\"falling\":
 			# TODO: Set animation
@@ -64,8 +66,8 @@ func set_state(new_state):
 			scoreboard.gameover()
 			fade.visible = true
 			fade.color.a = 0
-			game_speed = 0
-			pass
+			set_game_speed(0)
+			$AudioStreamPlayer.stop()
 	state = new_state
 
 func do_jump():
@@ -88,8 +90,7 @@ func try_grow_speed(delta):
 	speed_timer -= delta
 	if speed_timer < 0:
 		speed_timer += SPEED_GROW_DELAY
-		game_speed *= SPEED_GROW_C
-		game_speed += SPEED_GROW_A
+		set_game_speed(game_speed * SPEED_GROW_C + SPEED_GROW_A)
 
 func _process(delta):
 	match state:
@@ -125,7 +126,8 @@ func _input(event):
 	if event.is_action_pressed(\"exit\"):
 		get_tree().quit()
 	if event.is_action_pressed(\"jump\"):
-		do_jump()"
+		do_jump()
+"
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -158,3 +160,6 @@ flip_h = true
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( -220.181, -253.905 )
 polygon = PoolVector2Array( 80.7934, 110.133, 140.152, 255.387, 253.163, 250.078, 257.473, 169.492, 307.753, 138.066, 315.435, 51.4726 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
