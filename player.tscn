@@ -1,0 +1,105 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends KinematicBody2D
+
+onready var colorRect = get_node('ColorRect')
+onready var fade = get_node('../fade_rect')
+onready var body = get_node('')
+onready var start_origin_y = body.transform.get_origin().y
+
+const JUMP_HEIGHT = 400
+const JUMP_SPEED = 1000
+const FALL_SPEED = 300
+
+var game_speed = 1.0
+
+var state_timer = 0
+
+func set_game_speed(speed):
+	#TODO: Set animation speed
+	game_speed = speed
+
+var state
+
+func set_state(new_state):
+	match new_state:
+		\"idle\":
+			# TODO: Set animation
+			colorRect.color = Color.red
+			game_speed = 0
+		\"running\":
+			# TODO: Set animation
+			colorRect.color = Color.green
+		\"jumping\":
+			# TODO: Set animation
+			if state == \"idle\":
+				game_speed = 1.0
+			colorRect.color = Color.blue
+		\"falling\":
+			# TODO: Set animation
+			pass
+		\"dying\":
+			# TODO: Set animation
+			fade.visible = true
+			fade.color.a = 0
+			game_speed = 0
+			pass
+	state = new_state
+
+func do_jump():
+	match state:
+		\"idle\": set_state(\"jumping\")
+		\"running\": set_state(\"jumping\")
+		\"dead\": get_tree().reload_current_scene()
+
+func do_kill():
+	if [\"dying\", \"dead\"].count(state):
+		return
+	set_state(\"dying\")
+
+func _ready():
+	fade.visible = false
+	set_state(\"idle\")
+
+func _process(delta):
+	match state:
+		\"jumping\":
+			body.translate(Vector2.UP * delta * JUMP_SPEED * game_speed)
+			if (start_origin_y - body.transform.get_origin().y) > JUMP_HEIGHT:
+				set_state(\"falling\")
+		\"falling\":
+			body.translate(Vector2.DOWN * delta * FALL_SPEED * game_speed)
+			if (start_origin_y - body.transform.get_origin().y) <= 0:
+				body.transform.get_origin().y = 0
+				set_state(\"running\")
+		\"dying\":
+			var c = fade.color
+			c.a = min(1.0, c.a + 0.05)
+			if c.a > 0.9:
+				set_state(\"dead\")
+				c.a = 1.0
+			fade.color = c
+		\"dead\":
+			state_timer += delta
+			if state_timer > 5:
+				do_jump()
+
+func _input(event):
+	if event.is_action_pressed(\"exit\"):
+		get_tree().quit()
+	if event.is_action_pressed(\"jump\"):
+		do_jump()
+"
+
+[node name="Node2D" type="KinematicBody2D"]
+script = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -128.0
+margin_top = -256.0
+margin_right = 128.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -128, -256 )
+polygon = PoolVector2Array( 99.2952, 7.9928, 94.3842, 247.402, 253.163, 250.078, 252.387, 5.56973 )
