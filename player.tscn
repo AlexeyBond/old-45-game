@@ -18,7 +18,7 @@
 script/source = "extends KinematicBody2D
 
 onready var colorRect = get_node('ColorRect')
-onready var fade = get_node('../fade_rect')
+onready var fade = get_node('../fade/fade_rect')
 onready var body = get_node('')
 onready var scoreboard = get_node('../scoreboard')
 onready var start_origin_y = body.transform.get_origin().y
@@ -50,11 +50,9 @@ func set_state(new_state):
 			game_speed = 0
 		\"running\":
 			$AnimatedSprite.play(\"running\")
-			# TODO: Set animation
 			colorRect.color = Color.green
 		\"jumping\":
 			$AnimatedSprite.play(\"jumping\")
-			# TODO: Set animation
 			if state == \"idle\":
 				game_speed = 1.0
 			colorRect.color = Color.blue
@@ -151,11 +149,12 @@ margin_left = -128.0
 margin_top = -256.0
 margin_right = 128.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( -128, -256 )
-polygon = PoolVector2Array( 99.2952, 7.9928, 101.202, 248.979, 253.163, 250.078, 252.387, 5.56973 )
-
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -15.8228, -86.1463 )
 frames = SubResource( 2 )
 animation = "running"
+flip_h = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -220.181, -253.905 )
+polygon = PoolVector2Array( 80.7934, 110.133, 140.152, 255.387, 253.163, 250.078, 257.473, 169.492, 307.753, 138.066, 315.435, 51.4726 )
