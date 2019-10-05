@@ -20,16 +20,21 @@ script/source = "extends KinematicBody2D
 onready var colorRect = get_node('ColorRect')
 onready var fade = get_node('../fade_rect')
 onready var body = get_node('')
+onready var scoreboard = get_node('../scoreboard')
 onready var start_origin_y = body.transform.get_origin().y
 
 const JUMP_HEIGHT = 400
 const JUMP_SPEED = 1000
 const FALL_SPEED = 300
+const SPEED_GROW_DELAY = 10
+const SPEED_GROW_C = 1.1
+const SPEED_GROW_A = 0
 
 
 var game_speed = 1.0
 
 var state_timer = 0
+var speed_timer = SPEED_GROW_DELAY
 
 func set_game_speed(speed):
 	#TODO: Set animation speed
@@ -58,6 +63,7 @@ func set_state(new_state):
 			pass
 		\"dying\":
 			# TODO: Set animation
+			scoreboard.gameover()
 			fade.visible = true
 			fade.color.a = 0
 			game_speed = 0
@@ -80,13 +86,27 @@ func _ready():
 	$AnimatedSprite.flip_h = true
 	set_state(\"idle\")
 
+func try_grow_speed(delta):
+	speed_timer -= delta
+	if speed_timer < 0:
+		speed_timer += SPEED_GROW_DELAY
+		game_speed *= SPEED_GROW_C
+		game_speed += SPEED_GROW_A
+
 func _process(delta):
 	match state:
+		\"running\":
+			scoreboard.update_current(delta)
+			try_grow_speed(delta)
 		\"jumping\":
+			scoreboard.update_current(delta)
+			try_grow_speed(delta)
 			body.translate(Vector2.UP * delta * JUMP_SPEED * game_speed)
 			if (start_origin_y - body.transform.get_origin().y) > JUMP_HEIGHT:
 				set_state(\"falling\")
 		\"falling\":
+			scoreboard.update_current(delta)
+			try_grow_speed(delta)
 			body.translate(Vector2.DOWN * delta * FALL_SPEED * game_speed)
 			if (start_origin_y - body.transform.get_origin().y) <= 0:
 				body.transform.get_origin().y = 0

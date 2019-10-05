@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://obstacle.tscn" type="PackedScene" id=2]
-[ext_resource path="res://BackgroundLayer.gd" type="Script" id=3]
+[ext_resource path="res://assets/road.png" type="Texture" id=1]
+[ext_resource path="res://player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://obstacle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://BackgroundLayer.gd" type="Script" id=4]
+[ext_resource path="res://scoreboard.gd" type="Script" id=5]
+[ext_resource path="res://text/new_dynamicfont.tres" type="DynamicFont" id=6]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -26,25 +29,47 @@ func _process(delta):
 		timer += rand_range(2, 10)
 "
 
+[sub_resource type="ShaderMaterial" id=3]
+
+[sub_resource type="Theme" id=2]
+default_font = ExtResource( 6 )
+
 [node name="Node2D" type="Node2D"]
 
-[node name="player" parent="." instance=ExtResource( 1 )]
+[node name="road" type="Sprite" parent="."]
+position = Vector2( 960.424, 881.541 )
+scale = Vector2( 240.166, 0.605971 )
+texture = ExtResource( 1 )
+
+[node name="player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 429.827, 886.081 )
 
-[node name="Node2D" parent="." instance=ExtResource( 2 )]
+[node name="Node2D" parent="." instance=ExtResource( 3 )]
+
+[node name="obstacle_spawner" type="Node2D" parent="."]
+script = SubResource( 1 )
+
+[node name="bg-01" type="Node2D" parent="."]
+script = ExtResource( 4 )
+directory = "res://bgs"
+start_scene = "res://bgs/01-00.tscn"
+prefix = "01-"
+scroll_speed = 500.0
+
+[node name="scoreboard" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="text" type="RichTextLabel" parent="scoreboard"]
+material = SubResource( 3 )
+margin_left = 1448.0
+margin_top = 17.0
+margin_right = 1906.0
+margin_bottom = 140.0
+theme = SubResource( 2 )
+custom_colors/default_color = Color( 0, 1, 0, 1 )
 
 [node name="fade_rect" type="ColorRect" parent="."]
 visible = false
 margin_right = 1920.0
 margin_bottom = 960.0
 color = Color( 1, 0, 0, 1 )
-
-[node name="obstacle_spawner" type="Node2D" parent="."]
-script = SubResource( 1 )
-
-[node name="bg-01" type="Node2D" parent="."]
-script = ExtResource( 3 )
-directory = "res://bgs"
-start_scene = "res://bgs/01-00.tscn"
-prefix = "01-"
-scroll_speed = 500.0
