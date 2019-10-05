@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/sprites/allChenals1.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/allChenals2.png" type="Texture" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://assets/sprites/await5.png" type="Texture" id=18]
 [ext_resource path="res://assets/sprites/await6.png" type="Texture" id=19]
 [ext_resource path="res://assets/sound/x0006.wav" type="AudioStream" id=20]
+[ext_resource path="res://assets/sound/jump.wav" type="AudioStream" id=21]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends KinematicBody2D
@@ -61,6 +62,7 @@ func set_state(new_state):
 			$AnimatedSprite.play(\"running\")
 			colorRect.color = Color.green
 		\"jumping\":
+			$jumpPlayer.play()
 			$AnimatedSprite.play(\"jumping\")
 			if state == \"idle\":
 				set_game_speed(1.0)
@@ -175,3 +177,8 @@ polygon = PoolVector2Array( 80.7934, 110.133, 140.152, 255.387, 253.163, 250.078
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 20 )
+
+[node name="jumpPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
