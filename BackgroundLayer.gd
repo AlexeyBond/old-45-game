@@ -14,7 +14,7 @@ func get_part_scenes():
 	dir.open(directory)
 
 	var scenes = [];
-	
+
 	dir.list_dir_begin()
 	var re = RegEx.new()
 	re.compile(prefix + '.*\\.tscn$')
@@ -24,7 +24,7 @@ func get_part_scenes():
 			'': break
 			var fn:
 				if re.search(fn):
-					print('Found: ', fn)
+					print('Found ', fn, ' in ', directory, ' as ', prefix, '*')
 					scenes.append(load(directory + '/' + fn))
 
 	return scenes
