@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://obstacle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://BackgroundLayer.gd" type="Script" id=3]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -40,3 +41,10 @@ color = Color( 1, 0, 0, 1 )
 
 [node name="obstacle_spawner" type="Node2D" parent="."]
 script = SubResource( 1 )
+
+[node name="bg-01" type="Node2D" parent="."]
+script = ExtResource( 3 )
+directory = "res://bgs"
+start_scene = "res://bgs/01-00.tscn"
+prefix = "01-"
+scroll_speed = 500.0

@@ -1,0 +1,19 @@
+[gd_scene format=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 51.0
+margin_top = 49.0
+margin_right = 1879.0
+margin_bottom = 138.0
+rect_pivot_offset = Vector2( 559, 121 )
+color = Color( 0.0313726, 0, 1, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = 53.0
+margin_top = 156.0
+margin_right = 1881.0
+margin_bottom = 194.0
+rect_pivot_offset = Vector2( 559, 121 )
+color = Color( 0.0313726, 0, 1, 1 )

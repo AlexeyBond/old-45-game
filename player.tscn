@@ -102,4 +102,4 @@ margin_right = 128.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( -128, -256 )
-polygon = PoolVector2Array( 99.2952, 7.9928, 94.3842, 247.402, 253.163, 250.078, 252.387, 5.56973 )
+polygon = PoolVector2Array( 99.2952, 7.9928, 101.202, 248.979, 253.163, 250.078, 252.387, 5.56973 )
