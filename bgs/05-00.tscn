@@ -1,30 +1,35 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/static/sun.png" type="Texture" id=1]
-[ext_resource path="res://assets/static/cloud-01.png" type="Texture" id=2]
+[ext_resource path="res://assets/static/pyramid.png" type="Texture" id=1]
+[ext_resource path="res://assets/static/sun.png" type="Texture" id=2]
+[ext_resource path="res://assets/static/cloud-01.png" type="Texture" id=3]
 
 [node name="Node2D" type="Node2D"]
 
+[node name="pyramid" type="Sprite" parent="."]
+position = Vector2( 1209.01, 195.249 )
+texture = ExtResource( 1 )
+
 [node name="sun" type="Sprite" parent="."]
 position = Vector2( 1433.09, 104.399 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="cloud-01" type="Sprite" parent="."]
 position = Vector2( 464.04, 156.61 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="cloud-02" type="Sprite" parent="."]
 position = Vector2( 701.883, 191.846 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="cloud-03" type="Sprite" parent="."]
 position = Vector2( 851.635, 138.992 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="cloud-04" type="Sprite" parent="."]
 position = Vector2( 1083.61, 200.655 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="cloud-05" type="Sprite" parent="."]
 position = Vector2( 264.37, 244.7 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )

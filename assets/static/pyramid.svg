@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64"
+   height="64"
+   viewBox="0 0 16.933333 16.933334"
+   version="1.1"
+   id="svg5275"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="pyramid.svg"
+   inkscape:export-filename="D:\code\old-45-game\assets\static\fish.png"
+   inkscape:export-xdpi="192"
+   inkscape:export-ydpi="192">
+  <defs
+     id="defs5269" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="7.7671261"
+     inkscape:cx="21.594377"
+     inkscape:cy="43.660538"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid5820" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5272">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-280.06665)">
+    <path
+       style="fill:#02003b;fill-opacity:1;stroke:#00ff00;stroke-width:0.26458335px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.98230088"
+       d="m 7.9375001,286.41665 -6.6145835,7.9375 10.5833334,1.32291 z"
+       id="path7495"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#00ff00;stroke-width:0.26458335px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.98230088"
+       d="m 5.2916667,286.41665 5.2916673,1.32291"
+       id="path7497"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#02ff01;fill-opacity:1;stroke:#00ff00;stroke-width:0.26458335px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.98230088"
+       d="m 6.6145833,286.68123 1.5875001,-4.49792 2.1166666,0.79375 -1.3229165,4.23334 -2.3812502,-0.52917"
+       id="path7499"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:#020001;fill-opacity:1;stroke:#00ff00;stroke-width:0.26458335px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.98230088"
+       d="m 5.0270834,290.64998 c 2.38125,-0.79375 3.9687501,0.79375 3.9687501,0.79375 0,0 -2.3812502,1.32292 -3.9687501,-0.79375 z"
+       id="path7501"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#00ff00;stroke-width:0.26458335px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.98230088"
+       d="m 10.054167,291.17915 c 5.55625,-1.85209 5.291666,3.96875 5.291666,3.96875"
+       id="path7503"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#00ff00;stroke-width:0.26458335px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.98230088"
+       d="m 4.4979167,290.3854 c -4.23333348,-0.52917 0.79375,-3.96875 0.79375,-3.96875"
+       id="path7505"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#02ff01;fill-opacity:1;fill-rule:nonzero;stroke:#00ff00;stroke-width:0.26458335;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.98230088"
+       id="path7507"
+       sodipodi:type="arc"
+       sodipodi:cx="6.8791666"
+       sodipodi:cy="291.17917"
+       sodipodi:rx="0.5291667"
+       sodipodi:ry="0.5291751"
+       sodipodi:start="0"
+       sodipodi:end="5.7265044"
+       sodipodi:open="true"
+       d="m 7.4083333,291.17917 a 0.5291667,0.5291751 0 0 1 -0.4557599,0.52406 0.5291667,0.5291751 0 0 1 -0.5822073,-0.37866 0.5291667,0.5291751 0 0 1 0.2942307,-0.62912 0.5291667,0.5291751 0 0 1 0.6638395,0.20412" />
+  </g>
+</svg>
