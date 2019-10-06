@@ -54,7 +54,7 @@ script = SubResource( 1 )
 z_index = -1000
 script = ExtResource( 4 )
 directory = "res://bgs"
-start_scene = "res://bgs/05-00.tscn"
+start_scene = "res://bgs/05-01.tscn"
 prefix = "05-"
 scroll_speed = 20.0
 
@@ -62,7 +62,7 @@ scroll_speed = 20.0
 z_index = -100
 script = ExtResource( 4 )
 directory = "res://bgs"
-start_scene = "res://bgs/04-00.tscn"
+start_scene = "res://bgs/04-01.tscn"
 prefix = "04-"
 scroll_speed = 50.0
 

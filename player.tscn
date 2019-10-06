@@ -40,7 +40,7 @@ const JUMP_HEIGHT = 400
 const JUMP_SPEED = 1000
 const FALL_SPEED = 300
 const SPEED_GROW_DELAY = 2
-const SPEED_GROW_C = 1.01
+const SPEED_GROW_C = 1.03
 const SPEED_GROW_A = 0
 
 var game_speed = 1.0
@@ -104,6 +104,7 @@ func _ready():
 	fade.visible = false
 	$AnimatedSprite.flip_h = true
 	set_state(\"idle\")
+	randomize()
 
 func try_grow_speed(delta):
 	speed_timer -= delta
@@ -138,7 +139,7 @@ func _process(delta):
 			fade.color = c
 		\"dead\":
 			state_timer += delta
-			if state_timer > 5:
+			if state_timer > 7:
 				do_jump()
 
 func _input(event):
