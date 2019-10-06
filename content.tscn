@@ -70,7 +70,7 @@ scroll_speed = 50.0
 z_index = -100
 script = ExtResource( 4 )
 directory = "res://bgs"
-start_scene = "res://bgs/02-00.tscn"
+start_scene = "res://bgs/02-02.tscn"
 prefix = "02-"
 scroll_speed = 150.0
 
