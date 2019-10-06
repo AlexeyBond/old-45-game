@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://assets/sprites/allChenals1.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/allChenals2.png" type="Texture" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://assets/static/pointer-01.png" type="Texture" id=23]
 [ext_resource path="res://assets/static/pointer-02.png" type="Texture" id=24]
 [ext_resource path="res://assets/static/pointer-03.png" type="Texture" id=25]
+[ext_resource path="res://assets/particle-00.png" type="Texture" id=26]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends KinematicBody2D
@@ -78,8 +79,9 @@ func set_state(new_state):
 			# TODO: Set animation
 			pass
 		\"dying\":
-			# TODO: Set animation
+			$AnimatedSprite.visible = false
 			scoreboard.gameover()
+			$Particles2D.emitting = true
 			$deathPlayer.play()
 			fade.visible = true
 			fade.color.a = 0
@@ -129,7 +131,7 @@ func _process(delta):
 				set_state(\"running\")
 		\"dying\":
 			var c = fade.color
-			c.a = min(1.0, c.a + 0.05)
+			c.a = min(1.0, c.a + 0.03)
 			if c.a > 0.9:
 				set_state(\"dead\")
 				c.a = 1.0
@@ -172,6 +174,32 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="Curve" id=4]
+min_value = -360.0
+max_value = 360.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 1
+emission_sphere_radius = 23.9
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 532.1
+initial_velocity_random = 1.0
+angular_velocity = 2.8026e-044
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+tangential_accel = 0.92
+tangential_accel_random = 1.0
+angle = 541.7
+angle_random = 1.0
+angle_curve = SubResource( 5 )
+
 [node name="Node2D" type="KinematicBody2D"]
 script = SubResource( 1 )
 
@@ -203,3 +231,14 @@ stream = ExtResource( 22 )
 [node name="nameSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 51.7757, -380.802 )
 frames = SubResource( 3 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 0, -90.1898 )
+emitting = false
+amount = 50
+lifetime = 5.36
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource( 6 )
+texture = ExtResource( 26 )
