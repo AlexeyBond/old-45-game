@@ -82,7 +82,7 @@ material = SubResource( 2 )
 margin_left = 1330.0
 margin_top = 17.0
 margin_right = 1906.0
-margin_bottom = 610.0
+margin_bottom = 953.0
 theme = SubResource( 3 )
 custom_colors/default_color = Color( 0, 1, 0, 1 )
 
