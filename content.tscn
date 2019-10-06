@@ -50,7 +50,24 @@ z_index = 1
 [node name="obstacle_spawner" type="Node2D" parent="."]
 script = SubResource( 1 )
 
+[node name="bg-03" type="Node2D" parent="."]
+z_index = -100
+script = ExtResource( 4 )
+directory = "res://bgs"
+start_scene = "res://bgs/04-00.tscn"
+prefix = "04-"
+scroll_speed = 50.0
+
+[node name="bg-02" type="Node2D" parent="."]
+z_index = -100
+script = ExtResource( 4 )
+directory = "res://bgs"
+start_scene = "res://bgs/02-00.tscn"
+prefix = "02-"
+scroll_speed = 150.0
+
 [node name="bg-01" type="Node2D" parent="."]
+z_index = -50
 script = ExtResource( 4 )
 directory = "res://bgs"
 start_scene = "res://bgs/01-00.tscn"

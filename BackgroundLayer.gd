@@ -30,30 +30,32 @@ func get_part_scenes():
 	return scenes
 
 class Part:
-	extends ParallaxBackground
+	extends Node2D
 	var scroll_speed
 	var scroll_size
 	signal scroll_end
 	var scrolled = false
 	
 	func _init(scene_node):
-		var parallax_layer = ParallaxLayer.new()
-		parallax_layer.add_child(scene_node)
+		#var parallax_layer = ParallaxLayer.new()
+		#parallax_layer.add_child(scene_node)
 
 		self.scroll_size = 1921 # TODO
-		self.scroll_offset.x = 1921
+		#self.scroll_offset.x = 1921
 		
-		self.add_child(parallax_layer)
+		#self.add_child(parallax_layer)
+		self.add_child(scene_node)
+		self.transform = self.transform.translated(Vector2.RIGHT * 1921)
 
 	func _process(delta):
 		var player = self.get_node('../../player')
 		var d_off = delta * scroll_speed * player.game_speed
-		self.scroll_offset.x -= d_off
-		if scroll_offset.x < -(scroll_size - 1920):
+		self.transform = self.transform.translated(Vector2.LEFT * d_off)
+		if self.transform.get_origin().x < -(scroll_size - 1920):
 			if !scrolled:
 				emit_signal("scroll_end")
 				scrolled = true
-			if scroll_offset.x < -scroll_size:
+			if self.transform.get_origin().x < -scroll_size:
 				get_parent().remove_child(self)
 
 var last_part_res
