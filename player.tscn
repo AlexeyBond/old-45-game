@@ -225,6 +225,7 @@ stream = ExtResource( 20 )
 
 [node name="jumpPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 21 )
+volume_db = 15.556
 
 [node name="deathPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 22 )
