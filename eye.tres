@@ -1,0 +1,13 @@
+[gd_resource type="ParticlesMaterial" format=2]
+
+[resource]
+flag_disable_z = true
+gravity = Vector3( 0.12, -60, 0 )
+angular_velocity = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = -192.9
+angle_random = 0.93
+scale = 0.0
+scale_random = 0.15
+color = Color( 1, 0, 0, 1 )

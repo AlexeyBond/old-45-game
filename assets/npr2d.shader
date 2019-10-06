@@ -31,5 +31,5 @@ void fragment() {
 	vec4 bg_sample = texture(bg_texture, SCREEN_UV / SCREEN_PIXEL_SIZE / bg_texture_size - off.yx);
 	vec4 bg = bg_color * bg_sample;
 
-    COLOR = mix(mix(bg, fg_color, w), special_color, col.r);
+    COLOR = mix(mix(bg, fg_color, w), special_color * mix(0.6, 1, bg_sample.r), col.r);
 }
