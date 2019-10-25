@@ -17,16 +17,19 @@ onready var player = get_node('../player')
 func spawn_obstacle():
 	get_parent().add_child(obstacle.instance())
 
+const MIN_RANGE = 5
+const MAX_RANGE = 15
+
 var timer
 
 func _ready():
-	timer = rand_range(2, 10)
+	timer = rand_range(MIN_RANGE, MAX_RANGE)
 
 func _process(delta):
 	timer -= delta * player.game_speed
 	if timer <= 0:
 		spawn_obstacle()
-		timer += rand_range(2, 10)
+		timer += rand_range(MIN_RANGE, MAX_RANGE)
 "
 
 [sub_resource type="ShaderMaterial" id=2]

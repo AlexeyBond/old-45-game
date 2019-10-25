@@ -3,7 +3,7 @@ shader_type canvas_item;
 uniform vec4 bg_color : hint_color;
 uniform vec4 fg_color : hint_color;
 uniform vec4 special_color : hint_color;
-uniform sampler3D hatch;
+uniform mediump sampler3D hatch;
 uniform float hatch_min : hint_range(0, 0.5);
 uniform float hatch_max : hint_range(0.7, 1.0);
 uniform float hatch_max_deviation : hint_range(0, 0.2);
